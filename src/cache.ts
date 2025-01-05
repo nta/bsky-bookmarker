@@ -1,7 +1,11 @@
 import { Level } from 'level';
 
 export class Cache {
-    private db = new Level('cache');
+    private db: Level;
+
+    constructor(path: string) {
+        this.db = new Level(path);
+    }
 
     async init() {
         await this.db.open();

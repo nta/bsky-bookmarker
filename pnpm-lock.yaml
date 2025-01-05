@@ -20,6 +20,9 @@ importers:
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
+      env-paths:
+        specifier: ^3.0.0
+        version: 3.0.0
       level:
         specifier: ^9.0.0
         version: 9.0.0
@@ -697,6 +700,10 @@ packages:
     resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
 
+  env-paths@3.0.0:
+    resolution: {integrity: sha512-dtJUTepzMW3Lm/NPxRf3wP4642UWhjL2sQxc+ym2YMj1m/H2zDNQOlezafzkHwn6sMstjHTwG6iQQsctDW/b1A==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
   esbuild@0.23.1:
     resolution: {integrity: sha512-VVNz/9Sa0bs5SELtn3f7qhJCDPCF5oMEl5cO9/SSinpE9hbPVvxbd572HH5AKiP7WD8INO53GgfDDhRjkylHEg==}
     engines: {node: '>=18'}
@@ -1338,6 +1345,8 @@ snapshots:
   detect-libc@2.0.3: {}
 
   dotenv@16.4.7: {}
+
+  env-paths@3.0.0: {}
 
   esbuild@0.23.1:
     optionalDependencies:

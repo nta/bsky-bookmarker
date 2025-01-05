@@ -9,11 +9,19 @@ import type { AppBskyFeedPost, AppBskyActorProfile, At } from '@atcute/client/le
 import mime from 'mime';
 import sharp from 'sharp';
 import { configDotenv } from 'dotenv';
+import envPaths from 'env-paths';
+import path from 'node:path';
 
-configDotenv();
+const paths = envPaths('bsky-bookmarker');
+
+const ENV_PATH = path.join(paths.config, '.env');
+
+configDotenv({
+    path: ENV_PATH
+});
 
 const input = process.argv[2];
-const cache = new Cache();
+const cache = new Cache(path.join(paths.cache, 'ldb'));
 const didPDSCache: Record<string, string> = {};
 
 const USER_API_KEY = process.env.DISCOURSE_USER_KEY;
@@ -30,7 +38,28 @@ class Media {
 }
 
 await (async () => {
+    if (!USER_API_KEY || !DISCOURSE_TOPIC || !DISCOURSE_URL) {
+        console.log('this thing is not configured! you should probably set up environment variables');
+        console.log(`for example,\n`
+            + `  mkdir -p '${path.dirname(ENV_PATH)}'\n`
+            + `  cp '${path.normalize(path.join(import.meta.dirname, '../.env.sample'))}' '${ENV_PATH}'\n\n`
+            + `and then edit the .env file as needed~`);
+
+        return;
+    }
+
+    // reaaalllyyyy
+    if (USER_API_KEY === '00000000000000000000000000000000') {
+        console.log(`USER_API_KEY is still not configured!! edit ${path.dirname(ENV_PATH)} maybe~`);
+        return;
+    }
+
     const rpc = new XRPC({ handler: simpleFetchHandler({ service: 'https://api.bsky.app' }) });
+
+    if (!input) {
+        console.error('no argument passed!?');
+        return;
+    }
 
     // taken from pdsls: https://github.com/notjuliet/pdsls/blob/6e103cc3c97ef995a8882bc7ee9cf0528e5763d3/src/main.tsx#L46
     const uri = input
@@ -41,10 +70,12 @@ await (async () => {
     const uriParts = uri.split("/");
 
     if (uriParts.length < 2) {
+        console.log('invalid url');
         return;
     }
 
     if (uriParts[1] !== 'app.bsky.feed.post') {
+        console.log('not a post');
         return;
     }
 
