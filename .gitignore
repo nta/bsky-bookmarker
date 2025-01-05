@@ -1,0 +1,7 @@
+node_modules/
+cache/
+dist/
+.env
+
+# NO NO NO NO  HVGEF CVENIHUCVN HIVN WHY ARE YOU HERE
+.DS_Store
