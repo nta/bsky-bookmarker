@@ -7,6 +7,10 @@ export class Cache {
         await this.db.open();
     }
 
+    async shutdown() {
+        await this.db.close();
+    }
+
     async getOrInit<T>(type: string, key: string, init: () => Promise<T>, valueEncoding = 'json') {
         const formattedKey = this.formatKey(type, key);
         let value = await this.db.get(formattedKey, {

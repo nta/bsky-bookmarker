@@ -219,3 +219,5 @@ async function getPDS(did: string) {
         });
     });
 }
+
+await cache.shutdown();
