@@ -28,13 +28,17 @@ importers:
         version: 4.0.6
       pkgroll:
         specifier: ^2.6.0
-        version: 2.6.0
+        version: 2.6.0(typescript@5.7.2)
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
       tsx:
         specifier: ^4.19.2
         version: 4.19.2
+    devDependencies:
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
 
 packages:
 
@@ -891,6 +895,11 @@ packages:
     engines: {node: '>=18.0.0'}
     hasBin: true
 
+  typescript@5.7.2:
+    resolution: {integrity: sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   undici-types@6.20.0:
     resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
@@ -1488,7 +1497,7 @@ snapshots:
 
   picomatch@4.0.2: {}
 
-  pkgroll@2.6.0:
+  pkgroll@2.6.0(typescript@5.7.2):
     dependencies:
       '@rollup/plugin-alias': 5.1.1(rollup@4.29.2)
       '@rollup/plugin-commonjs': 28.0.2(rollup@4.29.2)
@@ -1501,6 +1510,8 @@ snapshots:
       esbuild: 0.24.2
       magic-string: 0.30.17
       rollup: 4.29.2
+    optionalDependencies:
+      typescript: 5.7.2
 
   queue-microtask@1.2.3: {}
 
@@ -1590,5 +1601,7 @@ snapshots:
       get-tsconfig: 4.8.1
     optionalDependencies:
       fsevents: 2.3.3
+
+  typescript@5.7.2: {}
 
   undici-types@6.20.0: {}
