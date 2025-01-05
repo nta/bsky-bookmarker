@@ -3,7 +3,7 @@ import { Cache } from './cache.js';
 import { CredentialManager, simpleFetchHandler, XRPC } from '@atcute/client';
 import '@atcute/bluesky/lexicons';
 
-import { DidDoc } from './types.js';
+import { DidDoc } from './diddoc.js';
 
 import type { AppBskyFeedPost, AppBskyActorProfile, At } from '@atcute/client/lexicons';
 import mime from 'mime';

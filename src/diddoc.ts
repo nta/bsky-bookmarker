@@ -1,3 +1,4 @@
+// literally https://github.com/notjuliet/pdsls/blob/456de9478606edf81f92977288143b5050c8bb93/src/utils/types.ts
 interface DidDoc {
   "@context": string[];
   id: string;
