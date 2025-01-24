@@ -120,20 +120,26 @@ await (async () => {
 
     const post = data.value as AppBskyFeedPost.Record;
     if (post.embed) {
-        if (post.embed.$type === 'app.bsky.embed.images') {
-            for (const image of post.embed.images) {
+        await processEmbed(post.embed);
+    }
+
+    async function processEmbed(embed: typeof post.embed) {
+        if (embed.$type === 'app.bsky.embed.images') {
+            for (const image of embed.images) {
                 media.push({
                     ...await formatBlob(image.image),
                     alt: image.alt,
                     type: 'image',
                 });
             }
-        } else if (post.embed.$type === 'app.bsky.embed.video') {
+        } else if (embed.$type === 'app.bsky.embed.video') {
             media.push({
-                ...await formatBlob(post.embed.video),
-                alt: post.embed.alt,
+                ...await formatBlob(embed.video),
+                alt: embed.alt,
                 type: 'video',
             });
+        } else if (embed.$type === 'app.bsky.embed.recordWithMedia') {
+            await processEmbed(embed.media);
         }
     }
 
