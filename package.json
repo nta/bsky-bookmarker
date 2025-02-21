@@ -2,16 +2,16 @@
   "name": "bsky-bookmarker",
   "version": "0.0.1",
   "dependencies": {
-    "@atcute/bluesky": "^1.0.12",
+    "@atcute/bluesky": "^1.0.13",
     "@atcute/client": "^2.0.7",
-    "@types/node": "^22.10.10",
+    "@types/node": "^22.13.4",
     "dotenv": "^16.4.7",
     "env-paths": "^3.0.0",
     "level": "^9.0.0",
     "mime": "^4.0.6",
-    "pkgroll": "^2.6.1",
+    "pkgroll": "^2.10.0",
     "sharp": "^0.33.5",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.3"
   },
   "scripts": {
     "start": "tsx src/main.ts",
