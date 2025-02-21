@@ -1,7 +1,10 @@
 {
-	"compilerOptions": {
+    "compilerOptions": {
         "module": "nodenext",
         "moduleResolution": "nodenext",
-        "types": ["@types/node"]
-	}
+        "types": [
+            "@types/node"
+        ],
+        "rootDir": "src"
+    }
 }

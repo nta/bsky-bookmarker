@@ -1,4 +1,5 @@
-import { ICache } from './cache.js';
+import { DummyCache, Cache } from './cache.js';
+import type { ICache } from './cache.js';
 
 import { CredentialManager, simpleFetchHandler, XRPC } from '@atcute/client';
 import '@atcute/bluesky/lexicons';
@@ -8,6 +9,8 @@ import { DidDoc } from './diddoc.js';
 import type { AppBskyFeedPost, AppBskyActorProfile, At } from '@atcute/client/lexicons';
 import mime from 'mime';
 import sharp from 'sharp';
+
+export { ICache, DummyCache, Cache };
 
 export class Configuration {
     discourseUrl: string;
